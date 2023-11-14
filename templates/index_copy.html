@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon"
+    href="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+    type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../static/index.css" />
+  <title>Just Broom</title>
+  <script>
+    function redirectToFeedbackForm() {
+      window.location.href = "/feedback_form";
+    }
+
+    function redirectToFound() {
+      window.location.href = "/found";
+    }
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Sofia");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "poppins", sans-serif;
+    }
+
+    body {
+      background-color: #1f2029;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #333;
+      padding: 10px 20px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo img {
+      width: 50px;
+      margin-right: 10px;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .container {
+      height: 80%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .col-md-4 {
+      width: 440px;
+      padding: 30px;
+    }
+
+    .btn-primary {
+      width: 60%;
+      height: 100px;
+      background: #61a3ba;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #d2de32;
+      transform: scale(1.05, 1);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img
+        src="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+        alt="Logo" />
+    </div>
+    <h1>JustBroom</h1>
+  </header>
+  <div class="container">
+    <button class="btn btn-primary" onclick="redirectToFeedbackForm()">
+      Feedback Form
+    </button>
+    <br><br><br><br><br><br>
+    <button class="btn btn-primary" onclick="redirectToFound()">
+      Lost and Found
+    </button>
+  </div>
+</body>
+
+</html>

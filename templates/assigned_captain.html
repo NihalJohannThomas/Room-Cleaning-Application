@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon"
+        href="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+        type="image/x-icon">
+    <title>JustBroom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #428bca;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            text-align: left;
+        }
+
+        .nav-container {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .nav-container a {
+            text-decoration: none;
+            margin: 0 10px;
+            color: #fff;
+        }
+
+        .assigned-captain {
+            font-size: 24px;
+            margin: 20px;
+        }
+
+        .logout-button {
+            margin-top: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+    {% extends 'layout.html' %}
+    {% block content %}
+    <h1>JustBroom</h1>
+    <div class="nav-container">
+        <div class="nav-container">
+            <a href="{{ url_for('clean') }}">Home</a>
+            <a href="#">Lost and Found</a>
+            <a href="{{ url_for('events') }}" target="_blank">Events</a>
+            <a href="#">Complaint</a>
+            <a href="#">Wi-Fi</a>
+        </div>
+    </div>
+    <div class="assigned-captain">
+        {{ assigned_captain_message }}
+    </div>
+    <form action="/logout" method="post" class="logout-button">
+        <input type="submit" value="Logout" />
+    </form>
+    {% endblock %}
+</body>
+
+</html>

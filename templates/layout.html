@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&" type="image/x-icon">
+    <title>JustBroom</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+  
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>

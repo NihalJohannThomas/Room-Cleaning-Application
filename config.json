@@ -1,0 +1,4 @@
+{
+    "mongo_connection_string": "Enter your MongoDB Connection String",
+    "abapi_key": "GeoLocation API Key or you can also your ipapi module present in Python instead"
+}

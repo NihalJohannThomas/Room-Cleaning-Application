@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JustBroom</title>
+	<link rel="icon"
+		href="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+		type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@700&family=Noto+Sans+Symbols+2&family=Spectral:wght@600&display=block");
+		@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+
+		:root {
+			--white: #ffffff;
+			--light: #f0eff3;
+			--black: #000000;
+			--dark-blue: #1f2029;
+			--dark-light: #353746;
+			--red: #da2c4d;
+			--yellow: #f8ab37;
+			--grey: #ecedf3;
+		}
+
+		body {
+			width: 100%;
+			background: var(--dark-blue);
+			overflow-x: hidden;
+			font-family: "Poppins", sans-serif;
+			font-size: 17px;
+			line-height: 30px;
+			-webkit-transition: all 300ms linear;
+			transition: all 300ms linear;
+		}
+
+		p {
+			font-family: "Poppins", sans-serif;
+			font-size: 17px;
+			line-height: 30px;
+			color: var(--white);
+			letter-spacing: 1px;
+			font-weight: 500;
+			-webkit-transition: all 300ms linear;
+			transition: all 300ms linear;
+		}
+
+		::selection {
+			color: var(--white);
+			background-color: var(--black);
+		}
+
+		::-moz-selection {
+			color: var(--white);
+			background-color: var(--black);
+		}
+
+		mark {
+			color: var(--white);
+			background-color: var(--black);
+		}
+
+		.section {
+			position: relative;
+			width: 100%;
+			display: block;
+			text-align: center;
+			margin: 0 auto;
+		}
+
+		.over-hide {
+			overflow: hidden;
+		}
+
+		.z-bigger {
+			z-index: 100 !important;
+		}
+
+		.background-color {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: var(--dark-blue);
+			z-index: 1;
+			-webkit-transition: all 300ms linear;
+			transition: all 300ms linear;
+		}
+
+		.checkbox:checked~.background-color {
+			background-color: var(--white);
+		}
+
+		[type="checkbox"]:checked,
+		[type="checkbox"]:not(:checked),
+		[type="radio"]:checked,
+		[type="radio"]:not(:checked) {
+			position: absolute;
+			left: -9999px;
+			width: 0;
+			height: 0;
+			visibility: hidden;
+		}
+
+		.checkbox:checked+label,
+		.checkbox:not(:checked)+label {
+			position: relative;
+			width: 70px;
+			display: inline-block;
+			padding: 0;
+			margin: 0 auto;
+			text-align: center;
+			margin: 17px 0;
+			margin-top: 100px;
+			height: 6px;
+			border-radius: 4px;
+			background-image: linear-gradient(298deg, var(--red), var(--yellow));
+			z-index: 100 !important;
+		}
+
+		.checkbox:checked+label:before,
+		.checkbox:not(:checked)+label:before {
+			position: absolute;
+			font-family: "unicons";
+			cursor: pointer;
+			top: -17px;
+			z-index: 2;
+			font-size: 20px;
+			line-height: 40px;
+			text-align: center;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			-webkit-transition: all 300ms linear;
+			transition: all 300ms linear;
+		}
+
+		.checkbox:not(:checked)+label:before {
+			content: "\eac1";
+			left: 0;
+			color: var(--grey);
+			background-color: var(--dark-light);
+			box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(26, 53, 71, 0.07);
+		}
+
+		.checkbox:checked+label:before {
+			content: "\eb8f";
+			left: 30px;
+			color: var(--yellow);
+			background-color: var(--dark-blue);
+			box-shadow: 0 4px 4px rgba(26, 53, 71, 0.25), 0 0 0 1px rgba(26, 53, 71, 0.07);
+		}
+
+		.checkbox:checked~.section .container .row .col-12 p {
+			color: var(--dark-blue);
+		}
+
+		.cleaning_option:checked+label,
+		.cleaning_option:not(:checked)+label {
+			position: relative;
+			display: inline-block;
+			padding: 20px;
+			width: 110px;
+			font-size: 14px;
+			line-height: 20px;
+			letter-spacing: 1px;
+			margin: 0 auto;
+			margin-left: 5px;
+			margin-right: 5px;
+			margin-bottom: 10px;
+			text-align: center;
+			border-radius: 4px;
+			overflow: hidden;
+			cursor: pointer;
+			text-transform: uppercase;
+			color: var(--white);
+			-webkit-transition: all 300ms linear;
+			transition: all 300ms linear;
+		}
+
+		.cleaning_option:not(:checked)+label {
+			background-color: var(--dark-light);
+			box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+		}
+
+		.cleaning_option:checked+label {
+			background-color: transparent;
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.cleaning_option:not(:checked)+label:hover {
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.cleaning_option:checked+label::before,
+		.cleaning_option:not(:checked)+label::before {
+			position: absolute;
+			content: "";
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 4px;
+			background-image: linear-gradient(298deg, var(--red), var(--yellow));
+			z-index: -1;
+		}
+
+		.cleaning_option:checked+label .uil,
+		.cleaning_option:not(:checked)+label .uil {
+			font-size: 24px;
+			line-height: 24px;
+			display: block;
+			padding-bottom: 10px;
+		}
+
+		.checkbox:checked~.section .container .row .col-12 .cleaning_option:not(:checked)+label {
+			background-color: var(--light);
+			color: var(--dark-blue);
+			box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+		}
+
+		.time_for_cleaning:checked+label,
+		.time_for_cleaning:not(:checked)+label {
+			position: relative;
+			display: inline-block;
+			padding: 0;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			width: 260px;
+			font-size: 52px;
+			line-height: 52px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			margin: 0 auto;
+			margin-left: 5px;
+			margin-right: 5px;
+			margin-bottom: 10px;
+			text-align: center;
+			border-radius: 4px;
+			overflow: hidden;
+			cursor: pointer;
+			text-transform: uppercase;
+			-webkit-transition: all 300ms linear;
+			transition: all 300ms linear;
+			-webkit-text-stroke: 1px var(--white);
+			text-stroke: 1px var(--white);
+			-webkit-text-fill-color: transparent;
+			text-fill-color: transparent;
+			color: transparent;
+		}
+
+		.time_for_cleaning:not(:checked)+label {
+			background-color: var(--dark-light);
+			box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+		}
+
+		.time_for_cleaning:checked+label {
+			background-color: transparent;
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.time_for_cleaning:not(:checked)+label:hover {
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.time_for_cleaning:checked+label::before,
+		.time_for_cleaning:not(:checked)+label::before {
+			position: absolute;
+			content: "";
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 4px;
+			background-image: linear-gradient(138deg, var(--red), var(--yellow));
+			z-index: -1;
+		}
+
+		.time_for_cleaning:checked+label span,
+		.time_for_cleaning:not(:checked)+label span {
+			position: relative;
+			display: block;
+		}
+
+		.time_for_cleaning:checked+label span::before,
+		.time_for_cleaning:not(:checked)+label span::before {
+			position: absolute;
+			content: attr(data-hover);
+			top: 0;
+			left: 0;
+			width: 100%;
+			overflow: hidden;
+			-webkit-text-stroke: transparent;
+			text-stroke: transparent;
+			-webkit-text-fill-color: var(--white);
+			text-fill-color: var(--white);
+			color: var(--white);
+			-webkit-transition: max-height 0.3s;
+			-moz-transition: max-height 0.3s;
+			transition: max-height 0.3s;
+		}
+
+		.time_for_cleaning:not(:checked)+label span::before {
+			max-height: 0;
+		}
+
+		.time_for_cleaning:checked+label span::before {
+			max-height: 100%;
+		}
+
+		.checkbox:checked~.section .container .row .col-xl-10 .time_for_cleaning:not(:checked)+label {
+			background-color: var(--light);
+			-webkit-text-stroke: 1px var(--dark-blue);
+			text-stroke: 1px var(--dark-blue);
+			box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			display: flex;
+			align-items: center;
+			background-color: #000;
+			padding: 10px 20px;
+			width: 100%;
+		}
+
+		.logo img {
+			width: 50px;
+			margin-right: 10px;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 24px;
+			margin: 0;
+		}
+
+		.nav-container {
+			text-align: left;
+			padding-left: 20px;
+		}
+
+		.nav-container a {
+			text-decoration: none;
+			margin: 0 10px;
+
+		}
+
+		form {
+			background-color: transparent;
+			margin: 20px;
+			padding: 20px;
+			border-radius: 0;
+			box-shadow: none;
+		}
+
+		label {
+			font-weight: bold;
+		}
+
+		input[type="text"],
+		select {
+			width: 100%;
+			color: #ffc107;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			margin: 5px 0;
+		}
+
+		input[type="submit"] {
+			background-color: #428bca;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+
+		.icon-container {
+			font-size: 48px;
+			margin: 20px 0;
+			color: #ffc107;
+		}
+
+		.room-number {
+			font-size: 24px;
+			margin: 10px 0;
+			color: #ffc107;
+		}
+
+		.logout-button {
+			margin-top: 20px;
+			opacity: 1;
+		}
+
+		.nav-container {
+			display: flex;
+			justify-content: space-evenly;
+			font-size: 13px;
+
+		}
+
+		.nav-container a {
+			flex: 1;
+		}
+
+		.btn-primary {
+			opacity: 1;
+			width: 60%;
+			height: 60px;
+			background: #428bca;
+			border: none;
+			border-radius: 30px;
+			cursor: pointer;
+			transition: 0.3s;
+			color: #fff;
+		}
+
+		.btn-primary:hover {
+			background: #61a3ba;
+			transform: scale(1.05, 1);
+		}
+
+		.btn-primary a {
+			text-decoration: none;
+			color: #fff;
+		}
+
+		.btn-primary a:hover {
+			text-decoration: none;
+		}
+
+		.form-container {
+			margin-top: 7vh;
+			text-align: center;
+
+			height: 60px;
+		}
+
+		.centered-radio-text {
+			text-align: center;
+		}
+
+		a {
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="others">
+		<header>
+			{% block content %}
+			<div class="logo">
+				<img src="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+					alt="Logo" />
+			</div>
+			<h1>JustBroom</h1>
+		</header>
+		<br />
+		<div class="nav-container">
+			<p class="mb-4 pb-2"></p><i class='uil uil-home'></i></p>
+			<a href="">Home</a>
+			<p class="mb-4 pb-2"><i class='uil uil-chat-bubble-user'></i> </p>
+			<a href="{{ url_for('events') }}" target="_blank">Events</a>
+			<p class="mb-4 pb-2"><i class='uil uil-book-reader'></i> </p>
+			<a href="{{ url_for('index_copy') }}" target="_blank">Complaint</a>
+			<p class="mb-4 pb-2"><i class='uil uil-wifi-router'></i> </p>
+			<a href="{{ url_for('wifi') }}" target="_blank">Wi-Fi</a>
+			<p class="mb-4 pb-2"><i class='uil uil-outgoing-call'></i> </p>
+			<a href="{{ url_for('emergency') }}" target="_blank">Emergency Contacts</a>
+		</div>
+		<br /><br />
+
+		<div class="icon-container">
+			<i class="fas fa-broom"></i> Remaining Cleanings: {{ remaining_cleanings }}
+		</div>
+		<div class="room-number">Room Number: {{ room_number }}</div>
+	</div>
+	<div class="main">
+		<form action="/clean" method="post">
+			<div class="section over-hide z-bigger">
+				<input class="checkbox" type="checkbox" name="general" id="general">
+				<div class="background-color"></div>
+				<div class="section over-hide z-bigger">
+					<div class="container pb-5">
+						<div class="row justify-content-center pb-5">
+							<div class="col-12 pt-5">
+								<p class="mb-4 pb-2">Cleaning Option <i class='uil uil-chat-bubble-user'></i> </p>
+							</div>
+							<div class="col-12 pb-5">
+								<input name="cleaning_option" class="cleaning_option" type="radio" id="broom"
+									value="broom" checked required>
+								<label for="broom">
+									<i class='uil uil-water-drop-slash'></i>
+									Broom
+								</label><!--
+								--><input name="cleaning_option" class="cleaning_option" type="radio" id="mop" value="mop" required>
+								<label for="mop">
+									<i class='uil uil-water'></i>
+									Mop
+								</label><!--
+								--><input name="cleaning_option" class="cleaning_option" type="radio" id="both" value="both" required>
+								<label for="both">
+									<i class='uil uil-layer-group'></i>
+									Both
+								</label>
+							</div>
+							<div class="col-12 pt-1">
+								<p class="mb-4 pb-2">Select Time for Cleaning <i class='uil uil-clock'></i> </p>
+
+							</div>
+							<div class="col-xl-10 pb-5">
+								<input type="radio" name="time_for_cleaning" id="time_1030" value="10:30 AM" required
+									class="time_for_cleaning" checked>
+								<label for="time_1030">
+									10:30 AM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1130" value="11:30 AM" required
+									class="time_for_cleaning">
+								<label for="time_1130">
+									11:30 AM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1230" value="12:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1230">
+									12:30 PM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1330" value="01:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1330">
+									01:30 PM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1430" value="02:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1430">
+									02:30 PM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1530" value="03:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1530">
+									03:30 PM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1630" value="04:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1630">
+									04:30 PM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1730" value="05:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1730">
+									05:30 PM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1830" value="06:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1830">
+									06:30 PM
+								</label>
+
+								<input type="radio" name="time_for_cleaning" id="time_1930" value="07:30 PM" required
+									class="time_for_cleaning">
+								<label for="time_1930">
+									07:30 PM
+								</label>
+
+							</div>
+						</div><input type="submit" class="btn-primary" value="Clean" />
+		</form>
+		<form action="/logout" method="post" class="logout-button">
+			<input type="submit" class="btn-primary" value="Logout" />
+		</form>
+		{% endblock %}
+		</form>
+	</div>
+	</div>
+	</div>
+	<br /><br />
+</body>
+
+</html>

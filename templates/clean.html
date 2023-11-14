@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JustBroom</title>
+    <link rel="icon"
+        href="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+        type="image/x-icon">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@700&family=Noto+Sans+Symbols+2&family=Spectral:wght@600&display=block");
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        .logo img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .nav-container {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .nav-container a {
+            text-decoration: none;
+            margin: 0 10px;
+            color: #fff;
+        }
+
+        form {
+            background-color: transparent;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin: 5px 0;
+        }
+
+        input[type="submit"] {
+            background-color: #428bca;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .icon-container {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+
+        .room-number {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .logout-button {
+            margin-top: 20px;
+            opacity: 1;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .box {
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        :root {
+            --primary: #ffc107;
+            --secondary: #673ab7;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            place-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--primary);
+            background: var(--secondary);
+        }
+
+        input {
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .group {
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+            padding: 1rem 1rem 1rem 2rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.25, 0.25, 0.5, 1.9);
+        }
+
+        label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: transparent;
+            border: 2px solid;
+            border-radius: 0.25rem;
+            z-index: -1;
+            transition: all 0.25s cubic-bezier(0.25, 0.25, 0.5, 1.9);
+        }
+
+        input[type="radio"]+label::before {
+            border-radius: 2rem;
+        }
+
+        input:checked+label {
+            padding-left: 1em;
+            color: var(--secondary);
+        }
+
+        input:checked+label::before {
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            border: 0;
+            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .nav-container a {
+            flex: 1;
+        }
+
+        .btn-primary {
+            opacity: 1;
+            width: 60%;
+            height: 60px;
+            background: #428bca;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #61a3ba;
+            transform: scale(1.05, 1);
+        }
+
+        .btn-primary a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .btn-primary a:hover {
+            text-decoration: none;
+        }
+
+        .form-container {
+            margin-top: 7vh;
+            text-align: center;
+
+            height: 60px;
+        }
+
+        .centered-radio-text {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        {% block content %}
+        <div class="logo">
+            <img src="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+                alt="Logo" />
+        </div>
+        <h1>JustBroom</h1>
+    </header>
+    <br />
+    <div class="nav-container">
+        <a href="">Home</a>
+
+        <a href="{{ url_for('events') }}" target="_blank">Events</a>
+        <a href="{{ url_for('index_copy') }}" target="_blank">Complaint</a>
+        <a href="{{ url_for('wifi') }}" target="_blank">Wi-Fi</a>
+        <a href="{{ url_for('emergency') }}" target="_blank">Emergency Contacts</a>
+    </div>
+    <br /><br />
+
+    <div class="icon-container">
+        <i class="fas fa-broom"></i> Remaining Cleanings: {{ remaining_cleanings }}
+    </div>
+    <div class="room-number">Room Number: {{ room_number }}</div>
+
+    <div class="form-container">
+        <form action="/clean" method="post">
+            <div class="box">
+                <label for="cleaning_option">Select Cleaning Option:</label><br />
+                <input type="radio" name="cleaning_option" id="broom" value="broom" required />
+                <label for="broom">Broom</label>
+                <input type="radio" name="cleaning_option" id="mop" value="mop" required />
+                <label for="mop">Mop</label>
+                <input type="radio" name="cleaning_option" id="both" value="both" required />
+                <label for="both">Both Broom and Mop</label>
+            </div>
+            <br />
+            <div class="box">
+                <label for="time_for_cleaning">Select Time for Cleaning:</label><br />
+                <input type="radio" name="time_for_cleaning" id="time_1030" value="10:30 AM" required />
+                <label for="time_1030">10:30 AM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1130" value="11:30 AM" required />
+                <label for="time_1130">11:30 AM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1330" value="1:30 PM" required />
+                <label for="time_1330">1:30 PM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1430" value="2:30 PM" required />
+                <label for="time_1430">2:30 PM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1530" value="3:30 PM" required />
+                <label for="time_1530">3:30 PM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1630" value="4:30 PM" required />
+                <label for="time_1630">4:30 PM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1730" value="5:30 PM" required />
+                <label for="time_1730">5:30 PM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1830" value="6:30 PM" required />
+                <label for="time_1830">6:30 PM</label>
+                <input type="radio" name="time_for_cleaning" id="time_1930" value="7:30 PM" required />
+                <label for="time_1930">7:30 PM</label>
+            </div>
+            <br /><br />
+            <input type="submit" class="btn-primary" value="Clean" />
+        </form>
+        <form action="/logout" method="post" class="logout-button">
+            <input type="submit" class="btn-primary" value="Logout" />
+        </form>
+        {% endblock %}
+    </div>
+</body>
+
+</html>

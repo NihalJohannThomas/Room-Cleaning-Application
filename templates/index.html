@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon"
+        href="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+        type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Sofia");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "poppins", sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            min-height: 100vh;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .col-md-4 {
+            width: 440px;
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 60px;
+            font-size: 17px;
+            padding: 0 25px;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 60px;
+            background: #61a3ba;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #d2de32;
+            transform: scale(1.05, 1);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-link {
+            text-align: center;
+            font-size: 15px;
+            margin-top: 20px;
+            color: #7D7C7C;
+            font-weight: 600;
+        }
+
+        .img {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .hi {
+            padding: 0.2em;
+            font-size: 1.5em;
+            width: 9.37em;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 36px;
+
+        }
+    </style>
+    <div class="img">
+        <img src="https://cdn.discordapp.com/attachments/1169281771242786907/1169325842380365865/tp2.png?ex=6554fe8d&is=6542898d&hm=e0fe02ea3bfdc5f30900eac754c93f43d4d9b49d14b2fdc6c38dadd5576537dc&"
+            alt="" class="hi" />
+
+    </div>
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <form method="POST" action="{{ url_for('login') }}">
+                <h1>Just Broom</h1>
+                <div class="form-group">
+                    <label for="exampleInputEmail1"></label><br />
+                    <input type="text" class="form-control" name="username" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1"></label><br />
+                    <input type="password" class="form-control" name="pass" placeholder="Password" />
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary btn-block">
+                    Log In
+                </button>
+            </form>
+            <br />
+            <div class="signup-link">
+                Don't have an account?
+                <a href="{{ url_for('register') }}" style="color: #61a3ba">Sign up here</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
